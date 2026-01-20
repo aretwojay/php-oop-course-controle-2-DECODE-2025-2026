@@ -1,6 +1,6 @@
 <?php
 
-namespace Config;
+namespace App\Lib\PDO;
 
 use PDO;
 
@@ -22,7 +22,7 @@ class Database
             );
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $this->connection;
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             die("Database connection failed: " . $e->getMessage());
         }
     }

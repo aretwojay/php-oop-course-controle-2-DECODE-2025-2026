@@ -2,7 +2,7 @@
 
 namespace App\Lib\Http;
 
-require dirname(__DIR__, 2) . '/config/routes.php';
+require dirname(__DIR__, 3) . '/config/routes.php';
 
 class Router {
 
