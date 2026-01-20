@@ -1,4 +1,6 @@
 <?php
+
+use App\Config\Database;
 session_start();
 
 function isLoggedIn(): bool {
@@ -6,14 +8,8 @@ function isLoggedIn(): bool {
 }
 
 function getDbConnexion(): PDO {
-    $host = 'php-oop-exercice-db';
-    $db = 'blog';
-    $user = 'root';
-    $password = 'password';
-
-    $dsn = "mysql:host=$host;dbname=$db;charset=UTF8";
-
-    return new PDO($dsn, $user, $password);
+    $database = new Database();
+    return $database->connect();
 }
 
 function getBlogPost(): array {
