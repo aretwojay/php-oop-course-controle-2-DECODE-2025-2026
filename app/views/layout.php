@@ -12,7 +12,7 @@
             <h1 class="text-2xl font-bold">My Blog</h1>
         </div>
     </header>
-    <main class="container mx-auto p-4">
+    <main class="min-h-full">
         <?= $content ?>
     </main>
     <footer class="bg-gray-800 text-white p-4 mt-8">

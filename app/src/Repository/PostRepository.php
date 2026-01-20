@@ -11,4 +11,11 @@ class PostRepository extends AbstractRepository {
 		return $this->readOne(Post::class, [ 'id' => $id ]);
 	}
 
+    public function findMany(array $filters = [], array $order = [], int $limit = 10, int $offset = 0, array $joins = [
+          ['table' => 'users', 'condition' => 'users.id = posts.user_id']
+    ]): array {
+        return $this->readMany(Post::class, $filters, $order, $limit, $offset, $joins);
+    }
+     
+
 }

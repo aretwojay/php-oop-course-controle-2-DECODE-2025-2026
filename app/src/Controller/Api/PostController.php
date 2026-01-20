@@ -1,24 +1,23 @@
 <?php
 
-namespace App\Controller;
 
+namespace App\Controller\Api;
 use App\Lib\Abstract\AbstractController;
 use App\Repository\PostRepository;
 
-class HomeController extends AbstractController
-{
+class PostController extends AbstractController {
+
     private PostRepository $postRepository;
-    public function __construct()
-    {
+    public function __construct() {
         $this->postRepository = new PostRepository();
     }
 
-    public function index()
-    {
+    public function findMany(): string {
         $limit = $_GET["limit"] ?? 10;
-        $offset = $_GET["offset"] ?? 0;
+        $page = $_GET["page"] ?? 0;
+        echo var_dump($limit, $page);
+        $offset = ($page - 1) * $limit;
         $posts = $this->postRepository->findMany([], ["created_at" => "desc"], $limit, $offset);
-
-        return $this->renderView('/index.php', ['title' => 'Accueil', 'posts' => $posts]);
+        return json_encode($posts);
     }
 }
